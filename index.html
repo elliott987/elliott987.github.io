@@ -1,7 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectile Motion Visualizer</title>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <h1>Projectile Motion Visualizer</h1>
+    <label for="timeRange">Final Time:</label>
+    <input type="range" id="timeRange" name="timeRange" min="1" max="50" value="25">
+    <span id="timeValue">2.5</span> seconds
+    <br><br>
+    <img id="plotImage" src="plots/plot_25.png" alt="Projectile Motion Plot" style="max-width: 100%; height: auto;">
+    
+    <script>
+        const slider = document.getElementById('timeRange');
+        const timeValue = document.getElementById('timeValue');
+        const plotImage = document.getElementById('plotImage');
+
+        slider.oninput = function() {
+            const time = this.value / 10;
+            timeValue.innerText = time.toFixed(1);
+            plotImage.src = `plots/plot_${this.value}.png`;
+        };
+    </script>
 </body>
 </html>
